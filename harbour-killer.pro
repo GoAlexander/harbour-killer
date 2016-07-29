@@ -45,5 +45,6 @@ DISTFILES += \
     qml/pages/FirstEmptyPage.qml \
     qml/pages/LoserPage.qml \
     qml/pages/CongrPage.qml \
-    qml/pages/EnterCodePage.qml
-
+    qml/pages/EnterCodePage.qml \
+    qml/js/request.js \
+    qml/js/server_request.js
