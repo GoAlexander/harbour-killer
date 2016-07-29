@@ -33,14 +33,37 @@ import Sailfish.Silica 1.0
 
 //TODO: fix bug -> it can not swipe!!!
 Dialog {
+    id: dialogFirstPage
     property string name: "TEST_NAME"
     property string surname: "TEST_SURNAME"
+
+    function getNewVictum() {
+        //TODO Write code here!
+    }
+
     onAccepted: {
         console.log("accepted")
         pageStack.push(Qt.resolvedUrl("SecondPage.qml"))
     }
     onRejected: {
         console.log("declined")
+
+        //TODO:
+        //здесь произвожу расчеты!!!
+        //и новые данные в параметрах передаю
+        //только лучше QThread + .update(), т к он перейдет на новую страницу!!!
+        //короче, здесь не все так тривиально!
+        pageStack.push(Qt.resolvedUrl("FirstPage.qml"), {}, PageStackAction.Immediate)
+        //Find new Victum
+//        getNewVictum()
+
+        //Update all resources:
+//        dialogFirstPage.update()
+
+        //or a bit different :)
+        //avatar.update()
+        //nameText.update()
+        //surnameText.update()
     }
 
     Column {
@@ -48,6 +71,7 @@ Dialog {
 
         //TODO another names of Header!
         DialogHeader {
+            acceptText: "Accept"
             //TODO: remake or do it as in calling dialog (green/red)
             cancelText: "Cancel" //interesting bug!!!
         }

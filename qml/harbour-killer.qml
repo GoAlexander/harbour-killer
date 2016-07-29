@@ -34,10 +34,18 @@ import "pages"
 
 ApplicationWindow
 {
-    initialPage: Component { FirstPage { } }
+    //TODO write function instead of true (check AUTH)
+    initialPage: true ? Qt.createComponent(Qt.resolvedUrl("pages/FirstEmptyPage.qml")) : Qt.createComponent(Qt.resolvedUrl("pages/LoginPage.qml"))
     cover: Qt.resolvedUrl("cover/CoverPage.qml")
     allowedOrientations: Orientation.All
     _defaultPageOrientations: Orientation.All
+
+
+    //после того как страница полностью подгрузилась
+    Component.onCompleted: {
+        //immediate -> без анимации
+        pageStack.push(Qt.resolvedUrl("pages/FirstPage.qml"), {}, PageStackAction.Immediate)
+    }
 }
 
 
