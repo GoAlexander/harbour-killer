@@ -61,7 +61,7 @@ Dialog {
 		ServerRequest.server_getNextRandomTargetId("34853940", callback_getNextRandomTargetId)
         
         //Update all resources:
-//        dialogFirstPage.update()
+//       dialogFirstPage.update()
 
         //or a bit different :)
         //avatar.update()
