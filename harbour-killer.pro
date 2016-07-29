@@ -44,5 +44,7 @@ DISTFILES += \
     qml/pages/MapPage.qml \
     qml/pages/FirstEmptyPage.qml \
     qml/pages/LoserPage.qml \
-    qml/pages/CongrPage.qml
+    qml/pages/CongrPage.qml \
+    qml/js/request.js \
+    qml/js/server_request.js
 
