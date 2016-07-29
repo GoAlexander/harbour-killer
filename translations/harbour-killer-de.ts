@@ -16,6 +16,17 @@
     </message>
 </context>
 <context>
+    <name>EnterCodePage</name>
+    <message>
+        <source>Kill the victim</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enter unique code of victim</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>LoserPage</name>
     <message>
         <source>Shoot status</source>

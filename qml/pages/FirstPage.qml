@@ -36,6 +36,7 @@ Dialog {
     property string name: "TEST_NAME"
     property string surname: "TEST_SURNAME"
     property string imagePath: "../images/avatarUnknown.png"
+    property string uniqueKey: "13"
 
     function getNewVictim() {
         //TODO Write code here!
@@ -44,7 +45,7 @@ Dialog {
     onAccepted: {
         console.log("accepted")
         //open new page + receive some variables
-        pageStack.push(Qt.resolvedUrl("SecondPage.qml"), { "name": name, "surname": surname, "imagePath": imagePath}, PageStackAction.Animated)
+        pageStack.push(Qt.resolvedUrl("SecondPage.qml"), { "name": name, "surname": surname, "imagePath": imagePath, "uniqueKey": uniqueKey}, PageStackAction.Animated)
     }
     onRejected: {
         console.log("declined")
@@ -115,6 +116,24 @@ Dialog {
             wrapMode: Text.Wrap
             font.pixelSize: Theme.fontSizeExtraLarge
             text: surname
+        }
+
+        //TODO make it more beautiful!!!
+        Separator {
+            //alignment: Qt.AlignHCenter
+            width: parent.width
+            horizontalAlignment: Text.Center
+        }
+
+        Text {
+            id: keyText
+            width: parent.width
+            horizontalAlignment: Text.Center
+            color: Theme.highlightColor
+            font.bold: false
+            wrapMode: Text.Wrap
+            font.pixelSize: Theme.fontSizeExtraLarge
+            text: "Your code:\n" + uniqueKey
         }
 
     }

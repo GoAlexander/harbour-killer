@@ -6,7 +6,8 @@ Page {
     property string name
     property string surname
     property string imagePath //: "../images/avatarUnknown.png"
-    property bool flag: false //false -> not loading
+    //property bool flag: false //false -> not loading
+    property string uniqueKey
 
     SilicaFlickable {
         //header: PageHeader { title: qsTr("Wanted") }
@@ -31,12 +32,14 @@ Page {
         }
         contentHeight: column.height
 
+        /*
         BusyIndicator {
                 id: myBusyIndicator
                 size: BusyIndicatorSize.Large
                 anchors.centerIn: parent
                 running: flag //model.status == Model.Loading
         }
+        */
 
 
         Column {
@@ -77,6 +80,24 @@ Page {
                 font.pixelSize: Theme.fontSizeExtraLarge
                 text: surname
             }
+
+            //TODO make it more beautiful!!!
+            Separator {
+                //alignment: Qt.AlignHCenter
+                width: parent.width
+                horizontalAlignment: Text.Center
+            }
+
+            Text {
+                id: keyText
+                width: parent.width
+                horizontalAlignment: Text.Center
+                color: Theme.highlightColor
+                font.bold: false
+                wrapMode: Text.Wrap
+                font.pixelSize: Theme.fontSizeExtraLarge
+                text: "Your code:\n" + uniqueKey
+            }
         }
 
         PushUpMenu {
@@ -88,6 +109,8 @@ Page {
                 text: "Kill!"
                 onClicked: {
                     console.log(qsTr("Option <Kill!> clicked"))
+                    pageStack.push(Qt.resolvedUrl("EnterCodePage.qml"), {"uniqueKey": uniqueKey})
+                    /*
                     flag = true
                     //TODO -> checking
                     if(true) { //"убил"
@@ -101,6 +124,7 @@ Page {
                         flag = false
                         pageStack.push(Qt.resolvedUrl("LoserPage.qml"))
                     }
+                    */
                 }
             }
             //MenuLabel { text: qsTr("Informational label") }

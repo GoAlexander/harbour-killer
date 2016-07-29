@@ -44,5 +44,6 @@ DISTFILES += \
     qml/pages/MapPage.qml \
     qml/pages/FirstEmptyPage.qml \
     qml/pages/LoserPage.qml \
-    qml/pages/CongrPage.qml
+    qml/pages/CongrPage.qml \
+    qml/pages/EnterCodePage.qml
 
