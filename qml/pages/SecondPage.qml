@@ -3,8 +3,9 @@ import Sailfish.Silica 1.0
 
 Page {
     id: secondPage
-    property string name: "TEST_NAME"
-    property string surname: "TEST_SURNAME"
+    property string name
+    property string surname
+    property string imagePath //: "../images/avatarUnknown.png"
     property bool flag: false //false -> not loading
 
     SilicaFlickable {
@@ -48,7 +49,8 @@ Page {
 
             Image {
                 id: avatarSecondPage
-                source: "../images/avatarUnknown.png"
+                //По идее, картинка уже закеширована в FirstPage, поэтому траффик не будет жрать!
+                source: imagePath
                 anchors.horizontalCenter: parent.horizontalCenter
                 //anchors.verticalCenter: parent //TODO make hole bigger!!!
                 width: 400 //parent.width
