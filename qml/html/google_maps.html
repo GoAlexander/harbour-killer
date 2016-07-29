@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <style type="text/css">
+      html { height: 100% }
+      body { height: 100%; margin: 0; padding: 0 }
+      #map_canvas { height: 100% }
+    </style>
+    <script type="text/javascript"
+      src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDJubmdBYEcmLzYS5S9ICpUKsSRkpF3uFI&sensor=false">
+    </script>
+    <script type="text/javascript">
+      var map;
+      var lines = [];
+      var markers = [];
+
+      function initialize() {
+        var myOptions = {
+          center: new google.maps.LatLng(55.75289, 48.74462),
+          zoom: 15,
+          mapTypeId: google.maps.MapTypeId.ROADMAP,
+          panControl: true
+        };
+
+        map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+        addMarker(55.75289, 48.74462)
+      }
+      function addLine(lat_current, lng_current, lat_next, lng_next) {
+          var flightPlanCoordinates = [
+              {lat: lat_current, lng: lng_current},
+              {lat: lat_next,    lng: lng_next}
+          ];
+
+          var flightPath = new google.maps.Polyline({
+            path: flightPlanCoordinates,
+            geodesic: true,
+            strokeColor: '#FF0000',
+            strokeOpacity: 1.0,
+            strokeWeight: 2
+          });
+
+          flightPath.setMap(map);
+          lines.push(flightPath);
+
+          var newLoc = new google.maps.LatLng(lat_next, lng_next);
+          map.setCenter(newLoc);
+      }
+
+      function addMarker(lat_current, lng_current) {
+          var myLatLng = {lat: lat_current, lng: lng_current};
+
+          var marker = new google.maps.Marker({
+            position: myLatLng,
+            map: map,
+          })
+          markers.push(marker);
+      }
+
+      function removeMarker(id) {
+          markers[id].setMap(null);
+          markers.splice(id, 1);
+      }
+
+      function removeLine(id) {
+          prevCenter = lines[id].getPath().getAt(0);
+          lines[id].setMap(null);
+          lines.splice(id, 1);
+          map.setCenter(prevCenter);
+      }
+
+      function removeAllLines() {
+          firstCenter = lines[0].getPath().getAt(0);
+          map.setCenter(firstCenter);
+          lines.forEach(function (element) {
+             element.setMap(null);
+          });
+          lines.splice(0, lines.length);
+      }
+    </script>
+  </head>
+  <body onload="initialize()">
+    <div id="map_canvas" style="width:100%; height:100%"></div>
+  </body>
+</html>
+

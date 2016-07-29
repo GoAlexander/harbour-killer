@@ -25,8 +25,8 @@ OTHER_FILES += qml/harbour-killer.qml \
     rpm/harbour-killer.yaml \
     translations/*.ts \
     harbour-killer.desktop \
-    qml/js/*.js \                                                    
-    qml/html/*.html   
+    qml/js/*.js \
+    qml/html/*.html
 
 SAILFISHAPP_ICONS = 86x86 108x108 128x128 256x256
 
@@ -46,6 +46,6 @@ DISTFILES += \
     qml/pages/FirstEmptyPage.qml \
     qml/pages/LoserPage.qml \
     qml/pages/CongrPage.qml \
-    qml/pages/EnterCodePage.qml \
     qml/js/request.js \
     qml/js/server_request.js
+
