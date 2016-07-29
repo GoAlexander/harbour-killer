@@ -45,6 +45,27 @@ function sendRequestTo(query, callback) {
     request.send()
 }
 
+function sendPostRequestToServer(query, jsonstring, callback) {
+    console.log("sendPostRequestToServer");
+
+    var xhr = new XMLHttpRequest();
+    console.log(query)
+    console.log(jsonstring)
+
+    xhr.open('POST', query , true);
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4 && xhr.status == 200)
+        {
+            console.log(request.responseText)
+            if (typeof callback !== 'undefined' && request.responseText) {
+                callback (request.responseText.toString())
+            }
+        }
+    };
+    xhr.setRequestHeader("Content-Type", "application/json");
+    xhr.send(jsonstring);
+};
+
 function sendRequestToServer(query, callback) {
     console.log(query)
 
