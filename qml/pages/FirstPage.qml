@@ -35,6 +35,7 @@ Dialog {
     id: dialogFirstPage
     property string name: "TEST_NAME"
     property string surname: "TEST_SURNAME"
+    property string imagePath: "../images/avatarUnknown.png"
 
     function getNewVictim() {
         //TODO Write code here!
@@ -42,7 +43,8 @@ Dialog {
 
     onAccepted: {
         console.log("accepted")
-        pageStack.push(Qt.resolvedUrl("SecondPage.qml"), {}, PageStackAction.Animated)
+        //open new page + receive some variables
+        pageStack.push(Qt.resolvedUrl("SecondPage.qml"), { "name": name, "surname": surname, "imagePath": imagePath}, PageStackAction.Animated)
     }
     onRejected: {
         console.log("declined")
@@ -88,7 +90,7 @@ Dialog {
 
         Image {
             id: avatar
-            source: "../images/avatarUnknown.png"
+            source: imagePath
             anchors.horizontalCenter: parent.horizontalCenter
             width: 400 //parent.width
             height: 400 //sourceSize.height * width / sourceSize.width
