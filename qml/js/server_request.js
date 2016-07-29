@@ -31,12 +31,13 @@ var SERVER_VERSION = "v1.0"
 
 // @GET("/tasks/getNextRandomTargetId/{killer}")
 // @Headers({"Content-Type: application/json"}) 
-function server_getNextRandomTargetId(killerId) {
+function server_getNextRandomTargetId(killerId, callback) {
     console.log("try to getNextRandomTargetId")
     var query = SERVER_URL  + "/tasks/getNextRandomTargetId/" + killerId
     console.log(query)
-    RequestServer.sendRequestToServer(query, callback_getNextRandomTargetId)
+    RequestServer.sendRequestToServer(query, callback)
 }
+
 
 // @GET("/person/getPersonLocation/{person}") 
 // Response getTargetLocation (@Path("person") String person);
@@ -84,14 +85,108 @@ function server_getRating(from_, to_) {
 
 
 
+// @POST("/person/updatePersonLocation/{person}/{location}")
+// Response updatePersonLocation (@Path("person") String person, @Path("location") String location);
+function server_updatePersonLocatin(person_id, location) {
+    RequestServer.sendPostRequestToServer(SERVER_URL  + "/person/updatePersonLocation/" + person_id + "/" + location,
+                                          "", callback_updatePersonLocation)
+}
+
+
+
+// @POST("/person")
+// @FormUrlEncoded
+// @Headers({"Content-Type: application/x-www-form-urlencoded"})
+// Response postPerson (@Field("vkId") String person);
+function server_postPerson(person_id) {
+    RequestServer.sendPostRequestToServer(SERVER_URL  + "/person/updatePersonLocation/" + person_id + "/" + location,
+                                          "", callback_postPerson)
+}
+
+
+// @POST("/person/updatePersonBTDevice/{killer}/{btPerson}")
+// Response updatedPersonBT (@Path("killer") String killer, @Path("btPerson") String btPerson);
+function server_updatePersonBT(btPerson) {
+    RequestServer.sendPostRequestToServer(SERVER_URL  + "/person/updatePersonBTDevice/" + btPerson,
+                                          "", callback_updatePersonBTDevice)
+}
+
+
+
+// @POST("/tasks/tryCompleteWithBT/{killerId}/{btTarget}")
+// Response tryToCompleteWithBT (@Path("killerId") String killer, @Path("btTarget") String btTarget);
+function server_tryCompleteWithBT(killerId, btTarget) {
+    RequestServer.sendPostRequestToServer(SERVER_URL  + "/tasks/tryCompleteWithBT/" + killerId + "/" + btTarget,
+                                          "", callback_tryCompleteWithBT)
+}
+
+
+
+// @POST("/tasks/forgetRejectedTargets/{killer}")
+// @Headers({"Content-Type: application/x-www-form-urlencoded"})
+// Response forgetRejectedTargets (@Path ("killer") String person);
+function server_forgetRejectedTargets(killerId) {
+    RequestServer.sendPostRequestToServer(SERVER_URL  + "/tasks/forgetRejectedTargets/" + killerId,
+                                          "", callback_forgetRejectedTargets)
+}
+
+
+
+// @POST("/tasks/acceptTarget/{killer}/{target}")
+// @Headers({"Content-Type: application/x-www-form-urlencoded"})
+// Task acceptTarget (@Path ("killer") String killer, @Path ("target") String target);
+function server_acceptTarget(killerId, target) {
+    RequestServer.sendPostRequestToServer(SERVER_URL  + "/tasks/acceptTarget/" + killerId + "/" + target,
+                                          "", callback_acceptTarget)
+}
+
+
+
+// @POST("/tasks/cancelCurrentTask/{killer}")
+// Response cancelTarget (@Path ("killer") String killer);
+function server_cancelCurrentTask(killerId) {
+    RequestServer.sendPostRequestToServer(SERVER_URL  + "/tasks/cancelCurrentTask/" + killerId,
+                                          "", callback_cancelCurrentTask)
+}
+
+
+
+// @POST("/tasks/tryCompleteWithLocation/{killerId}/{location}")
+// String tryCompleteWithLocation( @Path ("killerId") String killerId, @Path("location") String location);
+function server_tryCompleteWithLocation(killerId, location) {
+    RequestServer.sendPostRequestToServer(SERVER_URL  + "/tasks/tryCompleteWithLocation/" + killerId + "/" + location,
+                                          "", callback_tryCompleteWithLocation)
+}
+
+
+
+
+function server_testPost()
+{
+    var sendJSON = {};
+
+    sendJSON["acc_data"] = client.speed_data;
+    sendJSON["com_data"] = client.turns_data;
+    sendJSON["tim_data"] = client.time_data;
+    sendJSON["lat"]      = client.lat;
+    sendJSON["lon"]      = client.lon;
+    sendJSON["speed"]    = client.speed;
+    sendJSON["values"]   = "" + client.values;
+    var send_data = JSON.stringify(sendJSON)
+    client.consoleLog(send_data);
+    RequestServer.sendRequestToServer(SERVER_URL  + "/history/getRating/{from}" + from_ + "/" + to_,
+                           callback_getRating)
+}
+
 // --------------- Callbacks -------------------
 function callback_getCurrentTask(jsonObject){
 	
 }
 
-function callback_getNextRandomTargetId(responseText) {
-    console.log(responseText);	
-}
+// in FirstPage
+//function callback_getNextRandomTargetId(responseText) {
+//    console.log(responseText);
+//}
 
 
 function callback_getTargetLocation(jsonObject) {
@@ -104,34 +199,52 @@ function callback_getPersonBTDeviceHint(jsonObject) {
 }
 
 
-// This is not used, for example only:)
-	function callback_Test(jsonObject) {
-		var firstName = jsonObject.response[0].first_name
-		var secondName = jsonObject.response[0].last_name
-		var fullName = firstName + " " + secondName
-		var oldAvatarName = StorageJS.readUserAvatar()
-		var newAvatarName = jsonObject.response[0].photo_100.split("/")
-		newAvatarName = newAvatarName[newAvatarName.length - 1]
-
-		if (StorageJS.readFullUserName() !== fullName) {
-			console.log("Replacing user name...")
-			StorageJS.saveUserName(firstName, secondName)
-			signaller.gotUserNameAndAvatar(fullName, cachePath + oldAvatarName)
-		}
-		if (oldAvatarName !== newAvatarName) {
-			console.log("Replacing user avatar...")
-			fileDownloader.startDownload(jsonObject.response[0].photo_100, 0)
-			StorageJS.saveUserAvatar(newAvatarName)
-		}
-	}
-//end
-
 function callback_getTaskHistory(jsonObject) {
 	console.log(jsonObject);
 }
 
 function callback_getRating(jsonObject) {
 	console.log(jsonObject);
+}
+
+
+function callback_updatePersonLocation(jsonObject) {
+    console.log(jsonObject);
+}
+
+
+function callback_postPerson(jsonObject) {
+    console.log(jsonObject);
+}
+
+
+function callback_updatePersonBTDevice(jsonObject) {
+    console.log(jsonObject);
+}
+
+
+function callback_tryCompleteWithBT(jsonObject) {
+    console.log(jsonObject);
+}
+
+
+function callback_forgetRejectedTargets(jsonObject) {
+    console.log(jsonObject);
+}
+
+
+function callback_acceptTarget(jsonObject) {
+    console.log(jsonObject);
+}
+
+
+function callback_cancelCurrentTask(jsonObject) {
+    console.log(jsonObject);
+}
+
+
+function callback_tryCompleteWithLocation(jsonObject) {
+    console.log(jsonObject)
 }
 
 

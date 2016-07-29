@@ -30,11 +30,12 @@
 
 import QtQuick 2.0
 import Sailfish.Silica 1.0
+import "../js/server_request.js" as ServerRequest
 
 Dialog {
     id: dialogFirstPage
-    property string name: "Вася"
-    property string surname: "Пупкин"
+    property string name: "TEST_NAME"
+    property string surname: "TEST_SURNAME"
     property string imagePath: "../images/avatarUnknown.png"
     property string uniqueKey: "Wait..."
 
@@ -57,9 +58,6 @@ Dialog {
         //короче, здесь не все так тривиально!
         pageStack.push(Qt.resolvedUrl("FirstPage.qml"), {}, PageStackAction.Immediate)
         //Find new Victim
-
-//        getNewVictim()
-
 		ServerRequest.server_getNextRandomTargetId("34853940", callback_getNextRandomTargetId)
         
         //Update all resources:
