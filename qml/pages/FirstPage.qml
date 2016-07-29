@@ -30,13 +30,14 @@
 
 import QtQuick 2.0
 import Sailfish.Silica 1.0
+import "../js/server_request.js" as ServerRequest
 
 Dialog {
     id: dialogFirstPage
     property string name: "Вася"
     property string surname: "Пупкин"
     property string imagePath: "../images/avatarUnknown.png"
-    property string uniqueKey: "Wait..."
+    property string uniqueKey: "Waiting..."
 
     function getNewVictim() {
         //TODO Write code here!
@@ -141,7 +142,7 @@ Dialog {
             font.bold: false
             wrapMode: Text.Wrap
             font.pixelSize: Theme.fontSizeExtraLarge
-            text: "Your code:\n" + uniqueKey
+            text: "Victim code:\n" + uniqueKey
         }
 
     }
