@@ -34,7 +34,8 @@ Page {
                 if( myTextField.text == uniqueKey) { //"убил"
                     flag = false
                     //return to the FirstPage to find new victim
-                    pageStack.replace(Qt.resolvedUrl("CongrPage.qml"))
+                    //pageStack.replace(Qt.resolvedUrl("CongrPage.qml")) //from version from SecondPage
+                    pageStack.replace(Qt.resolvedUrl("FirstPage.qml"))
                 }
                 else { //"промазал"
                     flag = false
