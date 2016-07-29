@@ -42,7 +42,7 @@ Dialog {
 
     onAccepted: {
         console.log("accepted")
-        pageStack.push(Qt.resolvedUrl("SecondPage.qml"))
+        pageStack.push(Qt.resolvedUrl("SecondPage.qml"), {}, PageStackAction.Animated)
     }
     onRejected: {
         console.log("declined")
