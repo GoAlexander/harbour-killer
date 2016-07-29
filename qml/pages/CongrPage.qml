@@ -20,7 +20,7 @@ Page {
             font.bold: false
             wrapMode: Text.Wrap
             font.pixelSize: Theme.fontSizeExtraLarge
-            text: "Congratulations!\nYou killed your victum!"
+            text: "Congratulations!\nYou killed your victim!"
         }
     }
 }

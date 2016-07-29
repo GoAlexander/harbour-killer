@@ -91,7 +91,7 @@ Page {
                     if(true) { //"убил"
                         //processing...
                         flag = false
-                        //return to the FirstPage to find new victum
+                        //return to the FirstPage to find new victim
                         pageStack.replace(Qt.resolvedUrl("CongrPage.qml"))
                     }
                     else { //"промазал"

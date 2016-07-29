@@ -36,7 +36,7 @@ Dialog {
     property string name: "TEST_NAME"
     property string surname: "TEST_SURNAME"
 
-    function getNewVictum() {
+    function getNewVictim() {
         //TODO Write code here!
     }
 
@@ -53,8 +53,8 @@ Dialog {
         //только лучше QThread + .update(), т к он перейдет на новую страницу!!!
         //короче, здесь не все так тривиально!
         pageStack.push(Qt.resolvedUrl("FirstPage.qml"), {}, PageStackAction.Immediate)
-        //Find new Victum
-//        getNewVictum()
+        //Find new Victim
+//        getNewVictim()
 
         //Update all resources:
 //        dialogFirstPage.update()
@@ -76,14 +76,14 @@ Dialog {
         }
 
         Text {
-            id: victumText
+            id: victimText
             width: parent.width
             horizontalAlignment: Text.Center
             color: Theme.highlightColor
             font.bold: true
             wrapMode: Text.Wrap
             font.pixelSize: Theme.fontSizeExtraLarge
-            text: "Choose new victum:"
+            text: "Choose new victim:"
         }
 
         Image {
