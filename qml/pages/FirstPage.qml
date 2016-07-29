@@ -31,7 +31,6 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 
-//TODO: fix bug -> it can not swipe!!!
 Dialog {
     id: dialogFirstPage
     property string name: "TEST_NAME"
@@ -76,6 +75,17 @@ Dialog {
             cancelText: "Cancel" //interesting bug!!!
         }
 
+        Text {
+            id: victumText
+            width: parent.width
+            horizontalAlignment: Text.Center
+            color: Theme.highlightColor
+            font.bold: true
+            wrapMode: Text.Wrap
+            font.pixelSize: Theme.fontSizeExtraLarge
+            text: "Choose new victum:"
+        }
+
         Image {
             id: avatar
             source: "../images/avatarUnknown.png"
@@ -88,8 +98,8 @@ Dialog {
             id: nameText
             width: parent.width
             horizontalAlignment: Text.Center
-            color: Theme.secondaryColor
-            font.bold: true
+            color: Theme.highlightColor
+            font.bold: false
             wrapMode: Text.Wrap
             font.pixelSize: Theme.fontSizeExtraLarge
             text: name
@@ -98,8 +108,8 @@ Dialog {
             id: surnameText
             width: parent.width
             horizontalAlignment: Text.Center
-            color: Theme.secondaryColor
-            font.bold: true
+            color: Theme.highlightColor
+            font.bold: false
             wrapMode: Text.Wrap
             font.pixelSize: Theme.fontSizeExtraLarge
             text: surname

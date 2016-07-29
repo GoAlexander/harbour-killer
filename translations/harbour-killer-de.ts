@@ -2,6 +2,13 @@
 <!DOCTYPE TS>
 <TS version="2.1">
 <context>
+    <name>CongrPage</name>
+    <message>
+        <source>Shoot status</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>CoverPage</name>
     <message>
         <source>Killer</source>
@@ -9,16 +16,16 @@
     </message>
 </context>
 <context>
-    <name>MapPage</name>
+    <name>LoserPage</name>
     <message>
-        <source>Map</source>
+        <source>Shoot status</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>SecondPage</name>
     <message>
-        <source>Option &lt;Kill!&gt; clicked</source>
+        <source>Option &lt;Open map&gt; clicked</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -26,7 +33,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Option &lt;Open map&gt; clicked</source>
+        <source>Option &lt;Kill!&gt; clicked</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

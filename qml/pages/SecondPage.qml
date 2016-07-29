@@ -5,6 +5,7 @@ Page {
     id: secondPage
     property string name: "TEST_NAME"
     property string surname: "TEST_SURNAME"
+    property bool flag: false //false -> not loading
 
     SilicaFlickable {
         //header: PageHeader { title: qsTr("Wanted") }
@@ -29,6 +30,13 @@ Page {
         }
         contentHeight: column.height
 
+        BusyIndicator {
+                id: myBusyIndicator
+                size: BusyIndicatorSize.Large
+                anchors.centerIn: parent
+                running: flag //model.status == Model.Loading
+        }
+
 
         Column {
             anchors.fill: parent
@@ -51,8 +59,8 @@ Page {
                 id: nameText
                 width: parent.width
                 horizontalAlignment: Text.Center
-                color: Theme.secondaryColor
-                font.bold: true
+                color: Theme.highlightColor
+                font.bold: false
                 wrapMode: Text.Wrap
                 font.pixelSize: Theme.fontSizeExtraLarge
                 text: name
@@ -61,8 +69,8 @@ Page {
                 id: surnameText
                 width: parent.width
                 horizontalAlignment: Text.Center
-                color: Theme.secondaryColor
-                font.bold: true
+                color: Theme.highlightColor
+                font.bold: false
                 wrapMode: Text.Wrap
                 font.pixelSize: Theme.fontSizeExtraLarge
                 text: surname
@@ -78,6 +86,19 @@ Page {
                 text: "Kill!"
                 onClicked: {
                     console.log(qsTr("Option <Kill!> clicked"))
+                    flag = true
+                    //TODO -> checking
+                    if(true) { //"убил"
+                        //processing...
+                        flag = false
+                        //return to the FirstPage to find new victum
+                        pageStack.replace(Qt.resolvedUrl("CongrPage.qml"))
+                    }
+                    else { //"промазал"
+                        //processing...
+                        flag = false
+                        pageStack.push(Qt.resolvedUrl("LoserPage.qml"))
+                    }
                 }
             }
             //MenuLabel { text: qsTr("Informational label") }

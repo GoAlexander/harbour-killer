@@ -42,5 +42,7 @@ TRANSLATIONS += translations/harbour-killer-de.ts
 DISTFILES += \
     qml/pages/LoginPage.qml \
     qml/pages/MapPage.qml \
-    qml/pages/FirstEmptyPage.qml
+    qml/pages/FirstEmptyPage.qml \
+    qml/pages/LoserPage.qml \
+    qml/pages/CongrPage.qml
 
